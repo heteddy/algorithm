@@ -186,5 +186,4 @@ func (graph WeightGraph) calculateShortPath(stepPathList *list.List, end GraphNo
 		}
 		return graph.calculateShortPath(stepPathList, end)
 	}
-
 }
