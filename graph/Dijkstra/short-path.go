@@ -86,19 +86,7 @@ allNodes := graph.GetAllNode()
 */
 func (graph WeightGraph) ShortPath(startNode, endNode GraphNode) (ret bool) {
 	stepPathList := list.New()
-	//currentWeightPath, existed := graph[startNode]
-	//if !existed {
-	//	return
-	//}
-	//
-	//for _, p := range currentWeightPath {
-	//	nodeList := list.New()
-	//	log.Println(p)
-	//	nodeList.PushBack(p.From)
-	//	nodeList.PushBack(p.To)
-	//	s := StepPath{NodeList: nodeList, SumWeight: p.Weight}
-	//	stepPathList.PushBack(s)
-	//}
+
 	if ok := graph.initStepPathList(stepPathList, startNode); ok {
 		return graph.calculateShortPath(stepPathList, endNode)
 	}
@@ -130,14 +118,6 @@ func (graph WeightGraph) calculateShortPath(stepPathList *list.List, end GraphNo
 	//2.1 如果当前的最短路径已经是终点，而且没有其他的路径待计算，则返回当前的就是最短的，结束
 	//3.沿着最短路径继续向前进，获取下一个路径，如果这是一个终点（非end，但是没有路径），将当前的的路径从stepPathList中删除
 	//3.1.如果有下一条路径则修改stepPathList并重新计算SumWeight，然后从graph中删除当前的路径
-	//log.Println("----starting new caculcation----")
-	//for t := stepPathList.Front(); t != nil; t = t.Next() {
-	//	v := t.Value
-	//	for t1 := v.(StepPath).NodeList.Front(); t1 != nil; t1 = t1.Next() {
-	//		log.Println("node", t1.Value)
-	//	}
-	//	log.Println("weight", v.(StepPath).SumWeight)
-	//}
 	minItem := stepPathList.Front()
 	min := minItem.Value.(StepPath).SumWeight
 
