@@ -1,6 +1,7 @@
 package main
 
 import (
+	"algorithm/data/bit-operation"
 	"algorithm/data/bitmap"
 	"log"
 	"math/rand"
@@ -29,5 +30,12 @@ func main() {
 		}
 		count++
 	}
-	log.Fatalf("% 30s", "complete!!!")
+	//log.Fatalf("% 30s", "complete!!!")
+
+	testArray := []int{100, 64, 23, 16, 128}
+	for _, v := range testArray {
+		log.Println(v, "power of 2", bit_operation.IsPowerOf2(v))
+		log.Println(v, "number of bit(1)", bit_operation.BitCount(v))
+	}
+
 }
