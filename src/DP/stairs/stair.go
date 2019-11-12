@@ -24,7 +24,6 @@ func cache(f CachedFunction) CachedFunction {
 	results := make(map[string]int)
 
 	return func(i int) int {
-
 		args := fmt.Sprint(i)
 		//如果这里的参数有很多个
 		//for _,v := range xs{
