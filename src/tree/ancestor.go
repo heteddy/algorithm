@@ -26,8 +26,11 @@ func (bTree *BinaryTree) GetAncestor(node1, node2 int) *BinaryTree {
 		return nil
 	}
 	if left != nil && right != nil {
+		// 左子树找到一个，右子树找到一个，因此当前就是父节点
 		return bTree
 	} else {
+		// 1. node1是node2的父节点，
+		// 2. 只找到其中一个节点比如
 		if left != nil {
 			return left
 		} else {

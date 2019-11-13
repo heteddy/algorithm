@@ -60,6 +60,9 @@ func main() {
 	fmt.Println("post order:")
 	t.PostOrder()
 
+	dist, _found := t.GetNodeDistance(2, 19)
+	fmt.Println("2->19 distance:", dist, _found)
+
 	probability.Shuffle(primers)
 	fmt.Println(primers)
 	randomM := probability.PickMRecursively(primers, 3)

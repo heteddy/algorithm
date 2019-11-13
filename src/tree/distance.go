@@ -27,37 +27,38 @@ func (bTree *BinaryTree) MaxDistance() (int, int) {
 }
 
 // // 返回值 1.距离，2.找到node个数
-// func (bTree *BinaryTree) GetNodeDistance(node1, node2 int) (int, int) {
-// 	var found = 0
-// 	var dist = 0
-// 	var lDist, lFound int
-// 	var rDist, rFound int
+func (bTree *BinaryTree) GetNodeDistance(node1, node2 int) (dist int, found int) {
+	var lDist, lFound int
+	var rDist, rFound int
 
-// 	if bTree.value == node2 || bTree.value == node1 {
-// 		found = 1
-// 		dist = 1
-// 	}
-// 	fmt.Printf("%2d enter: dist=%d found=%d \n", bTree.value, dist, found)
-// 	if bTree.left != nil {
-// 		lDist, lFound = bTree.left.GetNodeDistance(node1, node2)
-// 		found += lFound
-// 		if lFound == 2 {
-// 			return lDist, found
-// 		}
-// 	}
+	if bTree.left != nil {
+		lDist, lFound = bTree.left.GetNodeDistance(node1, node2)
+		found += lFound
+		dist += lDist
+	}
+	if bTree.right != nil && found != 2 {
+		rDist, rFound = bTree.right.GetNodeDistance(node1, node2)
+		found += rFound
+		dist += rDist
+	}
+	// 这种情况是左右子树
+	if found == 2 {
+		return
+	}
 
-// 	if bTree.right != nil && found < 2 {
-// 		rDist, rFound = bTree.right.GetNodeDistance(node1, node2)
-// 		found += rFound
-// 		if rFound == 2 {
-// 			return rDist, found
-// 		}
-// 	}
-// 	// 当前的节点为目的节点 distance
-// 	fmt.Printf("%2d ret: %d,%d \n", bTree.value, dist+lDist+rDist, found)
-// 	if found == 1 {
-// 		return dist + lDist + rDist + 1, found
-// 	}
-// 	return dist + lDist + rDist, found
-
-// }
+	if bTree.value == node2 || bTree.value == node1 {
+		found = rFound + lFound + 1
+		// 这种情况，2个节点都在一边；其中一个节点是另外一个节点的父节点
+		if found == 2 {
+			dist = int(math.Max(float64(lDist), float64(rDist)))
+		} else {
+			// 仅仅是当前的节点 found = 1
+			dist = lDist + rDist
+		}
+	}
+	// 当仅有一个节点，说明需要继续向上查找；因此需要增加 距离(节点层次需要递增)
+	if found == 1 {
+		dist += 1
+	}
+	return
+}
