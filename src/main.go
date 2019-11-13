@@ -2,11 +2,11 @@ package main
 
 import (
 	//tree "algorithm/tree"
-	primer "algorithm/primer"
+	prime "algorithm/prime"
+	probability "algorithm/probability"
+	"algorithm/tree"
 	"fmt"
 	"runtime"
-	"runtime/debug"
-	"time"
 )
 
 func main() {
@@ -49,17 +49,21 @@ func main() {
 	//fmt.Println("max distance", _distance)
 
 	runtime.GOMAXPROCS(1)
-	debug.SetMaxThreads(5)
-	exitChan := make(chan struct{})
-	ch := primer.GenerateNumbers() // 自然数序列: 2, 3, 4, ...
-	for i := 0; i < 100; i++ {
-		prime := <-ch // 新出现的素数
-		fmt.Printf("%v: %v\n", i+1, prime)
-		ch = primer.PrimerFilter(ch, exitChan, prime) // 基于新素数构造的过滤器
-	}
-	time.Sleep(2000)
-	close(ch)
-	exitChan <- struct{}{}
-	close(exitChan)
+	primers := prime.GeneratePrime(20)
+	fmt.Println(primers)
+	t := tree.ConstructBinSearchTree(primers)
+
+	fmt.Println("pre order:")
+	t.PreOrder()
+	fmt.Println("order:")
+	t.MiddleOrder()
+	fmt.Println("post order:")
+	t.PostOrder()
+
+	probability.Shuffle(primers)
+	fmt.Println(primers)
+	randomM := probability.PickMRecursively(primers, 3)
+
+	fmt.Println(randomM)
 
 }

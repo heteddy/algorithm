@@ -1,5 +1,7 @@
 package tree
 
+import "fmt"
+
 type BinaryTree struct {
 	value int // value可以设置为一个接口，用于比较以及获取 值
 	left  *BinaryTree
@@ -16,6 +18,50 @@ func NewBinaryTreeNode(left *BinaryTree, right *BinaryTree, value int) *BinaryTr
 
 func (bTree *BinaryTree) GetValue() int {
 	return bTree.value
+}
+
+func (bTree *BinaryTree) PreOrder() {
+
+	if bTree != nil {
+		fmt.Println(bTree.GetValue())
+		if bTree.left != nil {
+			tmp := bTree.left
+			tmp.PreOrder()
+		}
+		if bTree.right != nil {
+			tmp := bTree.right
+			tmp.PreOrder()
+		}
+	}
+}
+func (bTree *BinaryTree) MiddleOrder() {
+
+	if bTree != nil {
+		if bTree.left != nil {
+			tmp := bTree.left
+			tmp.MiddleOrder()
+		}
+		fmt.Println(bTree.GetValue())
+		if bTree.right != nil {
+			tmp := bTree.right
+			tmp.MiddleOrder()
+		}
+	}
+}
+func (bTree *BinaryTree) PostOrder() {
+
+	if bTree != nil {
+		if bTree.left != nil {
+			tmp := bTree.left
+			tmp.PostOrder()
+
+		}
+		if bTree.right != nil {
+			tmp := bTree.right
+			tmp.PostOrder()
+		}
+		fmt.Println(bTree.GetValue())
+	}
 }
 
 /*
