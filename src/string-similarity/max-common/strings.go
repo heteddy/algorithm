@@ -27,7 +27,8 @@ package max_common
 func CommonString(s1, s2 string) int {
 	lenS1 := len(s1)
 	lenS2 := len(s2)
-	var resultArray [][]int
+
+	var resultArray = make([][]int, 0, lenS1)
 
 	for i := 0; i < lenS1; i++ {
 		tmp := make([]int, 0, lenS2)

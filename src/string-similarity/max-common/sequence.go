@@ -36,7 +36,8 @@ func max(p ...int) int {
 func CommonSequence(s1, s2 string) int {
 	lenS1 := len(s1)
 	lenS2 := len(s2)
-	var resultArray [][]int
+	// todo 这里有问题，需要创建slice
+	var resultArray = make([][]int, 0, lenS1)
 
 	for i := 0; i < lenS1; i++ {
 		tmp := make([]int, 0, lenS2)

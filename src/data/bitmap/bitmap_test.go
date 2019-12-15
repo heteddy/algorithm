@@ -1,15 +1,16 @@
-package main
+package bitmap
 
 import (
-	"algorithm/data/bitmap"
+	bit_operation "algorithm/data/bit-operation"
 	"log"
 	"math/rand"
+	"testing"
 	"time"
 )
 
-func main() {
+func TestBitMap(t *testing.T) {
 	var count int
-	bitmap := bitmap.New()
+	bitmap := New()
 
 	bitmap.Init()
 	addedNum := make(map[int32]bool)
@@ -33,8 +34,7 @@ func main() {
 
 	testArray := []int{100, 64, 23, 16, 128}
 	for _, v := range testArray {
-		log.Println(v, "power of 2", bit_operation.IsPowerOf2(v))
-		log.Println(v, "number of bit(1)", bit_operation.BitCount(v))
+		t.Log(v, "power of 2", bit_operation.IsPowerOf2(v))
+		t.Log(v, "number of bit(1)", bit_operation.BitCount(v))
 	}
-
 }
