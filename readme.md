@@ -3,7 +3,7 @@
 + [bitmap和大数据计算](https://github.com/heteddy/algorithm/tree/master/src/data/bitmap)
 + [给定一个数判断这个数是否是2的乘方-bitop](https://github.com/heteddy/algorithm/tree/master/src/data/bit-operation)
 + [给定一个数，获取这个数中bit位为1的个数](https://github.com/heteddy/algorithm/tree/master/src/data/bit-operation)
-+ [a+b不用+运算符计算2个正整数的值](https://github.com/heteddy/algorithm/tree/master/src/data/bit-operation)
++ [a+b - 不用+运算符计算2个正整数的值](https://github.com/heteddy/algorithm/tree/master/src/data/bit-operation)
 + [上台阶-递归](https://github.com/heteddy/algorithm/tree/master/src/DP)
 + [LRU以及redis LRU](https://github.com/heteddy/algorithm/tree/master/src/LRU)
 + [Dijkstra 最短路径](https://github.com/heteddy/algorithm/tree/master/src/graph/Dijkstra) 
