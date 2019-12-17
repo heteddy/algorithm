@@ -13,8 +13,8 @@
 + [排序](https://github.com/heteddy/algorithm/tree/master/src/sort)
 + [窗口最大值得数组](https://github.com/heteddy/algorithm/blob/master/src/stack)
 + [设计一个包含getMin的栈](https://github.com/heteddy/algorithm/blob/master/src/stack)
-+ [最长公共子串](https://github.com/heteddy/algorithm/tree/master/src/string-similarity/max-common)
-+ [最长公共子序列](https://github.com/heteddy/algorithm/tree/master/src/string-similarity/max-common)
++ [最长公共子串-动态规划](https://github.com/heteddy/algorithm/tree/master/src/string-similarity/max-common)
++ [最长公共子序列-动态规划](https://github.com/heteddy/algorithm/tree/master/src/string-similarity/max-common)
 + [树-2个节点的最小距离](https://github.com/heteddy/algorithm/tree/master/src/tree)
 + [树-2个节点的公共祖先](树-2个节点的最小距离)
 
