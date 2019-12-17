@@ -1,14 +1,17 @@
 package LRU
 
+import (
+	"fmt"
+	"log"
+)
+
 /*
 使用 HashMap 存储 key，这样可以做到 save 和 get key的时间都是 O(1)，而 HashMap 的 Value 指向双向链表实现的 LRU 的 Node 节点
-
 */
 
 type List struct {
-	head *Node
-	tail *Node
-
+	head   *Node
+	tail   *Node
 	length int
 }
 
@@ -31,27 +34,54 @@ func NewList() *List {
 }
 
 func (l *List) InsertToFront(n *Node) {
-	n.Next = l.head
-	n.Pre = nil
-	l.head = n
+
+	if l.IsEmpty() {
+		l.head = n
+		l.tail = n
+	} else {
+		n.Next = l.head
+		l.head.Pre = n
+		l.head = n
+		n.Pre = nil
+	}
 
 	l.length++
 
 }
 
 func (l *List) MoveNodeToFront(n *Node) {
-	previousNode := n.Pre
-	nextNode := n.Next
-	if previousNode != nil {
-		previousNode.Next = n.Next
+	if l.length == 1 {
+		log.Println("只有一个节点，应该是头结点直接返回")
+		return
+	}
+	// 位于开头
+	if l.head == n {
+		log.Println("头结点直接返回")
+		return
+	}
+	// 最后一个节点
+	if l.tail == n {
+		log.Println("尾结点,")
+		previousNode := n.Pre
+		previousNode.Next = nil
 
+		l.tail = previousNode
+		n.Next = l.head
+		l.head.Pre = n
+		l.head = n
+		n.Pre = nil
+		return
 	}
-	if nextNode != nil {
-		nextNode.Pre = previousNode
-	}
+
+	// 多个节点 而且位于中间位置
+	previousNode := n.Pre
+	previousNode.Next = n.Next
+	n.Next.Pre = previousNode
+
 	n.Next = l.head
-	n.Pre = nil
+	l.head.Pre = n
 	l.head = n
+	n.Pre = nil
 }
 
 func (l *List) RemoveLast() {
@@ -59,7 +89,10 @@ func (l *List) RemoveLast() {
 	if last != nil {
 		if last.Pre != nil {
 			last.Pre.Next = nil
+			l.tail = last.Pre
 			l.length--
+		} else {
+			log.Println("这里错误，pre不能为空")
 		}
 	}
 }
@@ -80,6 +113,7 @@ func NewLRUCache(length int) *LRUCache {
 
 func (c *LRUCache) Get(key string) interface{} {
 	if _v, ok := c.keyTable[key]; ok {
+		c.List.MoveNodeToFront(_v)
 		return _v.Value
 	} else {
 		return nil
@@ -111,4 +145,19 @@ func (c *LRUCache) Save(key string, v interface{}) {
 		c.keyTable[key] = node
 	}
 
+}
+
+func (c *LRUCache) String() string {
+	node := c.head
+	tail := c.tail
+	var str string
+	for {
+		str += fmt.Sprintf("%s:%d; ", node.key, node.Value.(int))
+		if node != tail {
+			node = node.Next
+		} else {
+			break
+		}
+	}
+	return str
 }
