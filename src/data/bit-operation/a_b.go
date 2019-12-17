@@ -8,5 +8,6 @@ func Add(a, b uint64) uint64 {
 	var sum, t uint64
 	sum = a ^ b
 	t = (a & b) << 1
+	// 也可以用循环
 	return Add(sum, t)
 }
