@@ -1,0 +1,20 @@
+# 常用算法
+
++ [bitmap和bit操作，大数据计算](https://github.com/heteddy/algorithm/tree/master/src/data)
++ [上台阶](https://github.com/heteddy/algorithm/tree/master/src/DP)
++ [LRU以及redis LRU](https://github.com/heteddy/algorithm/tree/master/src/LRU)
++ [Dijkstra 最短路径](https://github.com/heteddy/algorithm/tree/master/src/graph/Dijkstra) 
++ [最大背包](https://github.com/heteddy/algorithm/tree/master/src/knapsack/max-package)
++ [链表反转](https://github.com/heteddy/algorithm/tree/master/src/linked-list/reverse)
++ [素数-toEnhance](https://github.com/heteddy/algorithm/tree/master/src/prime)
++ [等概率选择](https://github.com/heteddy/algorithm/tree/master/src/probability)
++ [等概率打乱](https://github.com/heteddy/algorithm/tree/master/src/probability)
++ [ratelimit流量控制-toEnhance](https://github.com/heteddy/algorithm/tree/master/src/ratelimit)
++ [排序](https://github.com/heteddy/algorithm/tree/master/src/sort)
++ [窗口最大值得数组](https://github.com/heteddy/algorithm/blob/master/src/stack)
++ [设计一个包含getMin的栈](https://github.com/heteddy/algorithm/blob/master/src/stack)
++ [最长公共子串](https://github.com/heteddy/algorithm/tree/master/src/string-similarity/max-common)
++ [最长公共子序列](https://github.com/heteddy/algorithm/tree/master/src/string-similarity/max-common)
++ [树-2个节点的最小距离](https://github.com/heteddy/algorithm/tree/master/src/tree)
++ [树-2个节点的公共祖先](树-2个节点的最小距离)
+
