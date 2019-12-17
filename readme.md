@@ -1,6 +1,8 @@
 # 常用算法
 
-+ [bitmap和bit操作，大数据计算](https://github.com/heteddy/algorithm/tree/master/src/data)
++ [bitmap和大数据计算](https://github.com/heteddy/algorithm/tree/master/src/data/bitmap)
++ [给定一个数判断这个数是否是2的乘方-bitop](https://github.com/heteddy/algorithm/tree/master/src/data/bit-operation)
++ [给定一个数，获取这个数中bit位为1的个数](https://github.com/heteddy/algorithm/tree/master/src/data/bit-operation)
 + [上台阶](https://github.com/heteddy/algorithm/tree/master/src/DP)
 + [LRU以及redis LRU](https://github.com/heteddy/algorithm/tree/master/src/LRU)
 + [Dijkstra 最短路径](https://github.com/heteddy/algorithm/tree/master/src/graph/Dijkstra) 
@@ -16,5 +18,5 @@
 + [最长公共子串-动态规划](https://github.com/heteddy/algorithm/tree/master/src/string-similarity/max-common)
 + [最长公共子序列-动态规划](https://github.com/heteddy/algorithm/tree/master/src/string-similarity/max-common)
 + [树-2个节点的最小距离](https://github.com/heteddy/algorithm/tree/master/src/tree)
-+ [树-2个节点的公共祖先](树-2个节点的最小距离)
++ [树-2个节点的公共祖先](https://github.com/heteddy/algorithm/tree/master/src/tree)
 
