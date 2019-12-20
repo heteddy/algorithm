@@ -21,5 +21,6 @@
 + [树-2个节点的最小距离](https://github.com/heteddy/algorithm/tree/master/src/tree)
 + [树-2个节点的公共祖先](https://github.com/heteddy/algorithm/tree/master/src/tree)
 + [判断一棵树是否为平衡二叉树](https://github.com/heteddy/algorithm/tree/master/src/tree)
++ [一致性hash算法](https://github.com/heteddy/algorithm/tree/master/src/consistentHash)
 
 
