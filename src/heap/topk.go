@@ -5,6 +5,7 @@ import (
 	"sort"
 )
 
+
 type TopKInt struct {
 	kHeap  *Heap
 	k      int
@@ -13,7 +14,7 @@ type TopKInt struct {
 
 func NewTopKInt(k int, topMax bool) *TopKInt {
 	s := sort.IntSlice(make([]int, 0, k))
-	var slice HeapSortable
+	var slice HeapSortableSlice
 	if topMax {
 		slice = &MinIntSlice{s}
 	} else {
@@ -27,25 +28,24 @@ func NewTopKInt(k int, topMax bool) *TopKInt {
 }
 
 func (t *TopKInt) Insert(value int) {
+
 	if t.kHeap.Len() < t.k {
-
 		t.kHeap.Append(value)
-
 		if t.kHeap.Len() == t.k {
 			t.kHeap.Sort()
 		}
 	} else {
-		if top, err := t.kHeap.array.IndexOf(0); err == nil {
+		if top, err := t.kHeap.slice.IndexOf(0); err == nil {
 			// 检查是topMax 还是TopMin，
 			if t.topMax {
 				if value > top {
 					// 替换0
-					t.kHeap.array.Replace(0, value)
+					t.kHeap.slice.Replace(0, value)
 					t.kHeap.adjust(0)
 				}
 			} else {
 				if value < top {
-					t.kHeap.array.Replace(0, value)
+					t.kHeap.slice.Replace(0, value)
 					t.kHeap.adjust(0)
 				}
 			}

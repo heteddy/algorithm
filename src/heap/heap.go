@@ -5,15 +5,14 @@ import (
 	"fmt"
 )
 
-type HeapSortable interface {
+type HeapSortableSlice interface {
 	Len() int
 	Less(i, j int) bool
 	Swap(i, j int)
 	Append(v int)
-
 	IndexOf(int) (int, error)
 	Replace(int, int)
-
+	Pop() (int, error)
 }
 
 type MaxIntSlice struct {
@@ -43,7 +42,16 @@ func (s *MaxIntSlice) IndexOf(i int) (int, error) {
 	if len(s.array) > i {
 		return s.array[i], nil
 	}
-	return 0, errors.New("heap is empty")
+	return 0, errors.New("out of index")
+}
+
+func (s *MaxIntSlice) Pop() (int, error) {
+	if len(s.array) > 0 {
+		v := s.array[0]
+		s.array = s.array[1:]
+		return v, nil
+	}
+	return 0, errors.New("no element")
 }
 
 func (s *MaxIntSlice) String() string {
@@ -80,6 +88,14 @@ func (s *MinIntSlice) IndexOf(i int) (int, error) {
 	return 0, errors.New("heap is empty")
 }
 
+func (s *MinIntSlice) Pop() (int, error) {
+	if len(s.array) > 0 {
+		v := s.array[0]
+		s.array = s.array[1:]
+		return v, nil
+	}
+	return 0, errors.New("no element")
+}
 func (s *MinIntSlice) String() string {
 	return fmt.Sprint(s.array)
 }
@@ -87,47 +103,55 @@ func (s *MinIntSlice) String() string {
 // 大根堆还是小根堆主要看 Compare的结果
 // 默认按照大根堆来实现；如果是小根堆，只要覆盖less的实现就行了
 type Heap struct {
-	array HeapSortable
+	slice HeapSortableSlice
 }
 
-func NewHeap(p HeapSortable) *Heap {
-	return &Heap{array: p}
+func NewHeap(p HeapSortableSlice) *Heap {
+	return &Heap{slice: p}
 }
 
 func NewEmptyHeap() *Heap {
-	return &Heap{array: nil}
+	return &Heap{slice: nil}
 }
 
 func (h *Heap) Append(v int) {
-	h.array.Append(v)
+	h.slice.Append(v)
 }
 
 func (h *Heap) Sort() {
 	// 从非叶子节点开始排序
 
-	for index := h.array.Len() / 2; index >= 0; index-- {
+	for index := h.slice.Len() / 2; index >= 0; index-- {
 		h.adjust(index)
 	}
 }
 
-func (h *Heap) Len() int {
-	return h.array.Len()
+func (h *Heap) Pop() (int, error) {
+	if v, err := h.slice.Pop(); err == nil {
+		h.Sort()
+		return v, nil
+	} else {
+		return 0, nil
+	}
 }
 
+func (h *Heap) Len() int {
+	return h.slice.Len()
+}
 
 func (h *Heap) adjust(index int) {
 	childIndex := 2*index + 1
 	// 下标应该比长度小
-	if childIndex >= h.array.Len() {
+	if childIndex >= h.slice.Len() {
 		return
 	}
 
-	if childIndex+1 < h.array.Len() && h.array.Less(childIndex, childIndex+1) {
+	if childIndex+1 < h.slice.Len() && h.slice.Less(childIndex, childIndex+1) {
 		childIndex++
 	}
 
-	if h.array.Less(index, childIndex) {
-		h.array.Swap(index, childIndex)
+	if h.slice.Less(index, childIndex) {
+		h.slice.Swap(index, childIndex)
 		// 一旦交换了之后，后面的节点要重新调整顺序
 		h.adjust(childIndex)
 	}
