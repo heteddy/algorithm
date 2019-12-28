@@ -10,8 +10,10 @@ type HeapSortable interface {
 	Less(i, j int) bool
 	Swap(i, j int)
 	Append(v int)
-	Top() (int, error)
+
+	IndexOf(int) (int, error)
 	Replace(int, int)
+
 }
 
 type MaxIntSlice struct {
@@ -37,9 +39,9 @@ func (s *MaxIntSlice) Append(v int) {
 	s.array = append(s.array, v)
 }
 
-func (s *MaxIntSlice) Top() (int, error) {
-	if len(s.array) > 0 {
-		return s.array[0], nil
+func (s *MaxIntSlice) IndexOf(i int) (int, error) {
+	if len(s.array) > i {
+		return s.array[i], nil
 	}
 	return 0, errors.New("heap is empty")
 }
@@ -71,9 +73,9 @@ func (s MinIntSlice) Swap(i, j int) {
 func (s *MinIntSlice) Append(v int) {
 	s.array = append(s.array, v)
 }
-func (s *MinIntSlice) Top() (int, error) {
-	if len(s.array) > 0 {
-		return s.array[0], nil
+func (s *MinIntSlice) IndexOf(i int) (int, error) {
+	if len(s.array) > i {
+		return s.array[i], nil
 	}
 	return 0, errors.New("heap is empty")
 }
@@ -112,9 +114,6 @@ func (h *Heap) Len() int {
 	return h.array.Len()
 }
 
-func (h *Heap) Top() (int, error) {
-	return h.array.Top()
-}
 
 func (h *Heap) adjust(index int) {
 	childIndex := 2*index + 1

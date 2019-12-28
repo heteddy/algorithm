@@ -35,7 +35,7 @@ func (t *TopKInt) Insert(value int) {
 			t.kHeap.Sort()
 		}
 	} else {
-		if top, err := t.kHeap.Top(); err == nil {
+		if top, err := t.kHeap.array.IndexOf(0); err == nil {
 			// 检查是topMax 还是TopMin，
 			if t.topMax {
 				if value > top {
@@ -50,7 +50,7 @@ func (t *TopKInt) Insert(value int) {
 				}
 			}
 		} else {
-			log.Println(err)
+			log.Panic(err)
 		}
 	}
 }
