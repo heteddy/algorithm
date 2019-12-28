@@ -5,6 +5,7 @@
 + [给定一个数，获取这个数中bit位为1的个数](https://github.com/heteddy/algorithm/tree/master/src/data/bit-operation)
 + [a+b - 不用+运算符计算2个正整数的值](https://github.com/heteddy/algorithm/tree/master/src/data/bit-operation)
 + [上台阶-递归](https://github.com/heteddy/algorithm/tree/master/src/DP)
++ [走n*m棋盘-递归](https://github.com/heteddy/algorithm/tree/master/src/chessboard)
 + [LRU以及redis LRU](https://github.com/heteddy/algorithm/tree/master/src/LRU)
 + [Dijkstra 最短路径](https://github.com/heteddy/algorithm/tree/master/src/graph/Dijkstra) 
 + [最大背包](https://github.com/heteddy/algorithm/tree/master/src/knapsack/max-package)

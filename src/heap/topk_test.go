@@ -19,7 +19,6 @@ func TestTopKInt_Insert(t *testing.T) {
 	for i := 0; i < samples; i++ {
 		sample := rand.Intn(10000)
 		s = append(s, sample)
-
 		topMax10.Insert(sample)
 	}
 
