@@ -22,5 +22,7 @@
 + [树-2个节点的公共祖先](https://github.com/heteddy/algorithm/tree/master/src/tree)
 + [判断一棵树是否为平衡二叉树](https://github.com/heteddy/algorithm/tree/master/src/tree)
 + [一致性hash算法](https://github.com/heteddy/algorithm/tree/master/src/consistentHash)
++ [最大堆](https://github.com/heteddy/algorithm/tree/master/src/heap)
++ [从N个数中获取最大或者最小的m个数](https://github.com/heteddy/algorithm/tree/master/src/heap)
 
 
