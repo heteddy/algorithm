@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func TestMain(t *testing.M) {
+func TestConsistentHashService_Get(t *testing.T) {
 	rand := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	service := NewConsistentService(100)
@@ -29,6 +29,6 @@ func TestMain(t *testing.M) {
 	}
 
 	for k, v := range ipMap {
-		fmt.Println("Node:", k, " count:", v)
+		t.Log("Node:", k, " count:", v)
 	}
 }
