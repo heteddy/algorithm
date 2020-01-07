@@ -25,6 +25,6 @@
 1. [一致性hash算法](https://github.com/heteddy/algorithm/tree/master/src/consistentHash)
 1. [最大堆](https://github.com/heteddy/algorithm/tree/master/src/heap)
 1. [从N个数中获取最大或者最小的m个数](https://github.com/heteddy/algorithm/tree/master/src/heap)
-1. [跳跃表](https://github.com/heteddy/algorithm/tree/master/src/skiplist)
+1. [跳跃表 skiplist](https://github.com/heteddy/algorithm/tree/master/src/skiplist)
 
 

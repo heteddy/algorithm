@@ -30,9 +30,6 @@ type SkipList struct {
 func NewSkipList(maxLevel int) *SkipList {
 	next := make([] *Node, maxLevel, maxLevel)
 
-	for i := 0; i < maxLevel; i++ {
-		next[i] = nil
-	}
 	node := &Node{
 		key:     0,
 		level:   maxLevel,
@@ -49,9 +46,6 @@ func (s *SkipList) createNode(key uint64, level int) *Node {
 
 	next := make([] *Node, s.maxLevel, s.maxLevel)
 
-	for i := 0; i < level; i++ {
-		next[i] = nil
-	}
 	return &Node{
 		key:     key,
 		level:   level,
@@ -103,7 +97,6 @@ func (s *SkipList) Delete(key uint64) {
 			// 删除当前层
 			node.forward[j] = node.forward[j].forward[j]
 			//进入下一层
-			continue
 		}
 	}
 }
