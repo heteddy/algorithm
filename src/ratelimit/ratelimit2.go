@@ -20,13 +20,18 @@ func (r RealClock) Now() time.Time {
 }
 
 func (r RealClock) Sleep(d time.Duration) {
-	time.Sleep(d)
+	t := time.NewTimer(d)
+	defer t.Stop()
+	select {
+	case <-t.C:
+	}
+
 }
 
 // todo 支持预热，
 // 把10ms作为一个tick
 type Bucket struct {
-	clock       Clock
+	//clock       Clock
 	startTime   time.Time
 	mu          sync.Mutex
 	capacity    int64
@@ -112,7 +117,13 @@ func (tb *Bucket) TryAcquireTokens(tokens int64, d time.Duration) bool {
 	duration, ok := tb.takeToken(time.Now(), tokens, d);
 	if ok {
 		if duration > 0 {
-			time.Sleep(duration)
+			//tChan := time.After(duration) 效率不高
+			t := time.NewTimer(duration)
+			defer t.Stop()
+			select {
+			case <-t.C:
+
+			}
 			return true
 		}
 	}
