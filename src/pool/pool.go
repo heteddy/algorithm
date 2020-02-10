@@ -60,13 +60,11 @@ func (p *Pool) Put(t Task) *Pool {
 
 func (p *Pool) work(t Task) {
 	// 最长等待时间
-	log.Println("new worker", )
+
 	timer := time.NewTimer(p.MaxIdle)
-	//tick := time.NewTicker(p.MaxIdle)
-	//tick.Stop()
+
 	defer func() {
 		timer.Stop()
-		log.Println("worker exit")
 	}()
 
 	defer func() {
@@ -110,7 +108,9 @@ func (p *Pool) Close(grace bool) {
 		close(p.waitingChan)
 		close(p.workersChan)
 		if grace {
+			log.Println("等待结束")
 			p.wg.Wait()
+			log.Println("所有的worker结束")
 		}
 	}
 }

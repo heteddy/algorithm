@@ -25,7 +25,7 @@ type DebugTask struct {
 func (d *DebugTask) Run() error {
 	log.Printf("Debug task start running: %s", d.name)
 	r := rand.New(rand.NewSource(time.Now().UnixNano())).Int()
-	s := r % 5
+	s := r % 15
 	time.Sleep(time.Duration(s) * time.Second)
 	log.Printf("Debug task running: %s,sleeping %d", d.name, s)
 	return nil
@@ -47,7 +47,8 @@ func TestPool_Put(t *testing.T) {
 		d := &DebugTask{name: "NO:" + strconv.Itoa(i)}
 		p.Put(d)
 	}
-	time.Sleep(50 * time.Second)
+	time.Sleep(10 * time.Second)
+	p.Close(true)
 }
 
 func TestMain(m *testing.M) {
