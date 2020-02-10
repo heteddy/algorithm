@@ -27,5 +27,6 @@
 1. [从N个数中获取最大或者最小的m个数](https://github.com/heteddy/algorithm/tree/master/src/heap)
 1. [跳跃表 skiplist](https://github.com/heteddy/algorithm/tree/master/src/skiplist)
 1. [链表相加-大数之和](https://github.com/heteddy/algorithm/tree/master/src/add-numbers)
+1. [goroutine pool](https://github.com/heteddy/algorithm/tree/master/src/pool)
 
 
