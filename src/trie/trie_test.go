@@ -19,7 +19,7 @@ func TestTrie_Add(t *testing.T) {
 	} else {
 		t.Error("he count error")
 	}
-	trie.Add("hedetao")
+	trie.Add("hede")
 	if trie.ContainPrefix("he") == 2 {
 	} else {
 		t.Error("he count error")
@@ -38,8 +38,8 @@ func TestTrie_ContainWord(t *testing.T) {
 	if trie.ContainWord("ho") {
 		t.Error("he count error")
 	}
-	trie.Add("hedetao")
-	if trie.ContainWord("hedetao") {
+	trie.Add("hede")
+	if trie.ContainWord("hede") {
 	} else {
 		t.Error("he count error")
 	}
@@ -57,8 +57,8 @@ func TestTrie_Remove(t *testing.T) {
 	if trie.ContainWord("ho") {
 		t.Error("he count error")
 	}
-	trie.Add("hedetao")
-	if trie.ContainWord("hedetao") {
+	trie.Add("hede")
+	if trie.ContainWord("hede") {
 	} else {
 		t.Error("he count error")
 	}
