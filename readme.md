@@ -28,5 +28,6 @@
 1. [跳跃表 skiplist](https://github.com/heteddy/algorithm/tree/master/src/skiplist)
 1. [链表相加-大数之和](https://github.com/heteddy/algorithm/tree/master/src/add-numbers)
 1. [goroutine pool](https://github.com/heteddy/algorithm/tree/master/src/pool)
+1. [前缀树](https://github.com/heteddy/algorithm/tree/master/src/trie)
 
 
