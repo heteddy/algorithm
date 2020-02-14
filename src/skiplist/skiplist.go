@@ -11,8 +11,7 @@ func init() {
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 }
 
-// 经验值  1/4的升级概
-// 率
+// 经验值  1/4的升级概率
 const SKIPLIST_P = 4
 
 type Node struct {
@@ -155,7 +154,6 @@ func (s *SkipList) PrintList() {
 			}
 		}
 		fmt.Println("nil")
-		//fmt.Println("\n--------------------------------------------------------")
 	} //end for
 
 }
