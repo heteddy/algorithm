@@ -2,32 +2,25 @@ package heap
 
 import (
 	"log"
-	"sort"
 )
 
-
 type TopKInt struct {
-	kHeap  *Heap
-	k      int
-	topMax bool
+	kHeap *Heap
+	k     int
+	//topMax bool
 }
 
-func NewTopKInt(k int, topMax bool) *TopKInt {
-	s := sort.IntSlice(make([]int, 0, k))
+func NewTopKInt(k int) *TopKInt {
 	var slice HeapSortableSlice
-	if topMax {
-		slice = &MinIntSlice{s}
-	} else {
-		slice = &MaxIntSlice{s}
-	}
+	slice = &MinInt64Slice{make([]int64, 0, k)}
+
 	return &TopKInt{
-		kHeap:  NewHeap(slice),
-		k:      k,
-		topMax: topMax,
+		kHeap: NewHeap(slice),
+		k:     k,
 	}
 }
 
-func (t *TopKInt) Insert(value int) {
+func (t *TopKInt) Insert(value int64) {
 
 	if t.kHeap.Len() < t.k {
 		t.kHeap.Append(value)
@@ -37,17 +30,10 @@ func (t *TopKInt) Insert(value int) {
 	} else {
 		if top, err := t.kHeap.slice.IndexOf(0); err == nil {
 			// 检查是topMax 还是TopMin，
-			if t.topMax {
-				if value > top {
-					// 替换0
-					t.kHeap.slice.Replace(0, value)
-					t.kHeap.adjust(0)
-				}
-			} else {
-				if value < top {
-					t.kHeap.slice.Replace(0, value)
-					t.kHeap.adjust(0)
-				}
+			if value > top {
+				// 替换0
+				t.kHeap.slice.Replace(0, value)
+				t.kHeap.Build()
 			}
 		} else {
 			log.Panic(err)

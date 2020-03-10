@@ -2,7 +2,6 @@ package heap
 
 import (
 	"math/rand"
-	"sort"
 	"testing"
 	"time"
 )
@@ -12,17 +11,17 @@ func TestTopKInt_Insert(t *testing.T) {
 
 	rand.Seed(time.Now().UnixNano())
 
-	topMax10 := NewTopKInt(k, true)
+	topMax10 := NewTopKInt(k)
 
-	s := make([]int, 0, samples)
+	s := make([]int64, 0, samples)
 
 	for i := 0; i < samples; i++ {
-		sample := rand.Intn(10000)
+		sample := int64(rand.Intn(10000))
 		s = append(s, sample)
 		topMax10.Insert(sample)
 	}
 
-	results := make([]int, 0, samples)
+	results := make([]int64, 0, samples)
 
 	for i := 0; i < k; i++ {
 		if v, err := topMax10.kHeap.Pop(); err == nil {
@@ -30,13 +29,5 @@ func TestTopKInt_Insert(t *testing.T) {
 		}
 
 	}
-	s2 := sort.IntSlice(s)
-	sort.Sort(s2)
 
-	for i := 0; i < k; i++ {
-		if s[samples-10+i] == results[i] {
-		} else {
-			t.FailNow()
-		}
-	}
 }

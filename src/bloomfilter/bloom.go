@@ -28,7 +28,7 @@ type Filter struct {
 	n      uint64 /*bloom slots总的item数*/
 	//factor uint32 /*每个item(可以认为字节)占用的bit数*/
 	fnv  hash.Hash64 // 默认使用与wiredtiger一样的 fnv和city
-	city hash.Hash64
+	murmur hash.Hash64
 }
 
 func NewBloomFilter(k int, m int) *Filter {
@@ -39,7 +39,7 @@ func NewBloomFilter(k int, m int) *Filter {
 		m:      m,
 		n:      0,
 		fnv:    fnv.New64(),
-		city:   murmur3.New64(),
+		murmur:   murmur3.New64(),
 	}
 	return f
 }
@@ -53,9 +53,9 @@ func (filter *Filter) calHash(key BloomKey) (h1 uint64, h2 uint64, err error) {
 		filter.fnv.Write(bs)
 		h1 = filter.fnv.Sum64()
 
-		filter.city.Reset()
-		filter.city.Write(bs)
-		h2 = filter.city.Sum64()
+		filter.murmur.Reset()
+		filter.murmur.Write(bs)
+		h2 = filter.murmur.Sum64()
 	}
 	return
 }
