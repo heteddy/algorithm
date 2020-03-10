@@ -1,9 +1,9 @@
 # 常用算法
 
-1. [bitmap和大数据计算](https://github.com/heteddy/algorithm/tree/master/src/data/bitmap)
-1. [给定一个数判断这个数是否是2的乘方-bitop](https://github.com/heteddy/algorithm/tree/master/src/data/bit-operation)
-1. [给定一个数，获取这个数中bit位为1的个数](https://github.com/heteddy/algorithm/tree/master/src/data/bit-operation)
-1. [a+b - 不用+运算符计算2个正整数的值](https://github.com/heteddy/algorithm/tree/master/src/data/bit-operation)
+1. [bitmap和大数据计算](https://github.com/heteddy/algorithm/tree/master/src/bitmap)
+1. [给定一个数判断这个数是否是2的乘方-bitop](https://github.com/heteddy/algorithm/tree/master/src/bit-operation)
+1. [给定一个数，获取这个数中bit位为1的个数](https://github.com/heteddy/algorithm/tree/master/src/bit-operation)
+1. [a+b - 不用+运算符计算2个正整数的值](https://github.com/heteddy/algorithm/tree/master/src/bit-operation)
 1. [上台阶-递归](https://github.com/heteddy/algorithm/tree/master/src/DP)
 1. [走n*m棋盘-递归](https://github.com/heteddy/algorithm/tree/master/src/chessboard)
 1. [LRU以及redis LRU](https://github.com/heteddy/algorithm/tree/master/src/LRU)
@@ -29,5 +29,6 @@
 1. [链表相加-大数之和](https://github.com/heteddy/algorithm/tree/master/src/add-numbers)
 1. [goroutine pool](https://github.com/heteddy/algorithm/tree/master/src/pool)
 1. [前缀树](https://github.com/heteddy/algorithm/tree/master/src/trie)
+1. [布隆过滤器](https://github.com/heteddy/algorithm/tree/master/src/bloomfilter)
 
 
