@@ -42,20 +42,20 @@ func TestPool_Put(t *testing.T) {
 		d := &DebugTask{name: "NO:" + strconv.Itoa(i)}
 		p.Put(d)
 	}
-	time.Sleep(50 * time.Second)
-	for i := 10; i < 20; i++ {
+	time.Sleep(10 * time.Second)
+	for i := 10; i < 10; i++ {
 		d := &DebugTask{name: "NO:" + strconv.Itoa(i)}
 		p.Put(d)
 	}
-	time.Sleep(10 * time.Second)
+
 	p.Close(true)
 }
 
 func TestMain(m *testing.M) {
 	cfg := Config{
-		QSize:   10,
-		Workers: 3,
-		MaxIdle: time.Second * 3,
+		QSize:   1,
+		Workers: 5,
+		MaxIdle: time.Second * 6,
 	}
 
 	p = NewPool(&cfg)

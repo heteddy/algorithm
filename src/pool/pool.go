@@ -89,11 +89,19 @@ func (p *Pool) work(t Task) {
 		select {
 		// 超时仍未收到新的任务
 		case <-timer.C:
+			fmt.Println("error:", "等待超时")
 			return
-		case newTask := <-p.waitingChan:
-			if newTask == nil {
+		case newTask, ok := <-p.waitingChan:
+			if !ok {
+				fmt.Println("close chan")
 				return
+			} else {
+				if newTask == nil {
+					fmt.Println("error:", "new task is nil")
+					return
+				}
 			}
+
 			// To ensure the channel is empty after a call to Stop, check the
 			// return value and drain the channel.
 			// For example, assuming the program has not received from t.C already:
