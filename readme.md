@@ -7,7 +7,6 @@
 1. [a+b - 不用+运算符计算2个正整数的值](https://github.com/heteddy/algorithm/tree/master/src/bit-operation)
 1. [上台阶-递归](https://github.com/heteddy/algorithm/tree/master/src/DP)
 1. [走n*m棋盘-递归](https://github.com/heteddy/algorithm/tree/master/src/chessboard)
-1. [LRU以及redis LRU](https://github.com/heteddy/algorithm/tree/master/src/LRU)
 1. [Dijkstra 最短路径](https://github.com/heteddy/algorithm/tree/master/src/graph/Dijkstra) 
 1. [最大背包](https://github.com/heteddy/algorithm/tree/master/src/knapsack/max-package)
 1. [链表反转](https://github.com/heteddy/algorithm/tree/master/src/linked-list/reverse)
@@ -28,6 +27,7 @@
 1. [前缀树](https://github.com/heteddy/algorithm/tree/master/src/trie)
 
 ## 分布式系统相关算法
+1. [LRU以及redis LRU](https://github.com/heteddy/algorithm/tree/master/src/LRU)
 1. [ratelimit流量控制-toEnhance](https://github.com/heteddy/algorithm/tree/master/src/ratelimit)
 1. [一致性hash算法](https://github.com/heteddy/algorithm/tree/master/src/consistentHash)
 1. [跳跃表 skiplist](https://github.com/heteddy/algorithm/tree/master/src/skiplist)
