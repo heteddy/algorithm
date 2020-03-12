@@ -1,5 +1,6 @@
 # 常用算法
 
+## 算法和数据结构
 1. [bitmap和大数据计算](https://github.com/heteddy/algorithm/tree/master/src/bitmap)
 1. [给定一个数判断这个数是否是2的乘方-bitop](https://github.com/heteddy/algorithm/tree/master/src/bit-operation)
 1. [给定一个数，获取这个数中bit位为1的个数](https://github.com/heteddy/algorithm/tree/master/src/bit-operation)
@@ -13,7 +14,6 @@
 1. [素数-toEnhance](https://github.com/heteddy/algorithm/tree/master/src/prime)
 1. [等概率选择](https://github.com/heteddy/algorithm/tree/master/src/probability)
 1. [等概率打乱](https://github.com/heteddy/algorithm/tree/master/src/probability)
-1. [ratelimit流量控制-toEnhance](https://github.com/heteddy/algorithm/tree/master/src/ratelimit)
 1. [排序](https://github.com/heteddy/algorithm/tree/master/src/sort)
 1. [窗口最大值得数组](https://github.com/heteddy/algorithm/blob/master/src/stack)
 1. [设计一个包含getMin的栈](https://github.com/heteddy/algorithm/blob/master/src/stack)
@@ -22,13 +22,17 @@
 1. [树-2个节点的最小距离](https://github.com/heteddy/algorithm/tree/master/src/tree)
 1. [树-2个节点的公共祖先](https://github.com/heteddy/algorithm/tree/master/src/tree)
 1. [判断一棵树是否为平衡二叉树](https://github.com/heteddy/algorithm/tree/master/src/tree)
-1. [一致性hash算法](https://github.com/heteddy/algorithm/tree/master/src/consistentHash)
 1. [最大堆](https://github.com/heteddy/algorithm/tree/master/src/heap)
 1. [从N个数中获取最大或者最小的m个数](https://github.com/heteddy/algorithm/tree/master/src/heap)
-1. [跳跃表 skiplist](https://github.com/heteddy/algorithm/tree/master/src/skiplist)
 1. [链表相加-大数之和](https://github.com/heteddy/algorithm/tree/master/src/add-numbers)
-1. [goroutine pool](https://github.com/heteddy/algorithm/tree/master/src/pool)
 1. [前缀树](https://github.com/heteddy/algorithm/tree/master/src/trie)
+
+## 分布式系统相关算法
+1. [ratelimit流量控制-toEnhance](https://github.com/heteddy/algorithm/tree/master/src/ratelimit)
+1. [一致性hash算法](https://github.com/heteddy/algorithm/tree/master/src/consistentHash)
+1. [跳跃表 skiplist](https://github.com/heteddy/algorithm/tree/master/src/skiplist)
+1. [goroutine pool](https://github.com/heteddy/algorithm/tree/master/src/pool)
 1. [布隆过滤器](https://github.com/heteddy/algorithm/tree/master/src/bloomfilter)
+1. [基于堆的多路归并排序](https://github.com/heteddy/algorithm/tree/master/src/heap)
 
 
