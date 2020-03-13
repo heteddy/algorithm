@@ -5,7 +5,6 @@ package pool
 
 import (
 	"fmt"
-	"log"
 	"runtime"
 	"sync"
 	"sync/atomic"
@@ -45,7 +44,8 @@ func NewPool(cfg *Config) *Pool {
 
 func (p *Pool) Put(t Task) *Pool {
 	select {
-	// 如果worker数量未到上限,就创建一个worker
+	// 按需创建：如果worker数量未到上限,就创建一个worker；
+	// 优先放入workersChan
 	case p.workersChan <- struct{}{}:
 		p.wg.Add(1)
 		go p.work(t)
@@ -67,13 +67,15 @@ func (p *Pool) work(t Task) {
 
 	defer func() {
 		// 发生宕机时，获取panic传递的上下文并打印
-		err := recover()
-		switch err.(type) {
-		case runtime.Error: // 运行时错误
-			fmt.Println("runtime error:", err)
-		default: // 非运行时错误
-			fmt.Println("error:", err)
+		if err := recover(); err != nil {
+			switch err.(type) {
+			case runtime.Error: // 运行时错误
+				fmt.Println("goroutine pool:", err)
+			default: // 非运行时错误
+				//fmt.Println("error:", err)
+			}
 		}
+
 	}()
 	defer func() {
 		timer.Stop()
@@ -87,21 +89,16 @@ func (p *Pool) work(t Task) {
 			t.RunError(err)
 		}
 		select {
-		// 超时仍未收到新的任务
+		// 超时回收：超时仍未收到新的任务，退出当前的任务
 		case <-timer.C:
-			fmt.Println("error:", "等待超时")
 			return
 		case newTask, ok := <-p.waitingChan:
 			if !ok {
-				fmt.Println("close chan")
 				return
-			} else {
-				if newTask == nil {
-					fmt.Println("error:", "new task is nil")
-					return
-				}
 			}
-
+			if newTask == nil {
+				return
+			}
 			// To ensure the channel is empty after a call to Stop, check the
 			// return value and drain the channel.
 			// For example, assuming the program has not received from t.C already:
@@ -125,9 +122,7 @@ func (p *Pool) Close(grace bool) {
 		close(p.waitingChan)
 		close(p.workersChan)
 		if grace {
-			log.Println("等待结束")
 			p.wg.Wait()
-			log.Println("所有的worker结束")
 		}
 	}
 }

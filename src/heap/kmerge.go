@@ -80,7 +80,8 @@ func (h *HeapMerge) Pop() (int64, error) {
 			if len(h.nodes) >= 1 {
 				// 移除为已经合并完成的slice
 				h.nodes = h.nodes[1:]
-				h.adjust(0, len(h.nodes))
+				// 移除堆顶元素之后，需要重建树，因为父子关系发生改变
+				h.Build()
 			} else {
 				return 0, errors.New("merge complete")
 			}
@@ -108,10 +109,8 @@ func (h *HeapMerge) adjust(start, end int) {
 	if childIndex+1 < end && h.nodes[childIndex+1].Value() < h.nodes[childIndex].Value() {
 		childIndex++
 	}
-
 	if h.nodes[childIndex].Value() < h.nodes[start].Value() {
 		h.nodes[start], h.nodes[childIndex] = h.nodes[childIndex], h.nodes[start]
-
 		// 一旦交换了之后，后面的节点要重新调整顺序
 		h.adjust(childIndex, end)
 	}
