@@ -126,7 +126,7 @@ func (s *SkipList) Search(key uint64) *Node {
 // randomLevel 基于概率，计算当前的层数；默认是1层，抛硬币的方式决定是否晋升到上层
 // 层数如何使用
 func (s *SkipList) randomLevel(key uint64) int {
-	var level int = 1
+	level := 1
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	for (r.Uint32()&0xFFFF)%SKIPLIST_P == 0 {
@@ -150,7 +150,7 @@ func (s *SkipList) PrintList() {
 			if node.forward[i] != nil {
 				node = node.forward[i]
 			} else {
-				break;
+				break
 			}
 		}
 		fmt.Println("nil")

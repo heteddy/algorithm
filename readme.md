@@ -26,9 +26,9 @@
 1. [链表相加-大数之和](https://github.com/heteddy/algorithm/tree/master/src/add-numbers)
 1. [前缀树](https://github.com/heteddy/algorithm/tree/master/src/trie)
 
-## 分布式系统相关算法
+## 系统相关算法
 1. [LRU以及redis LRU](https://github.com/heteddy/algorithm/tree/master/src/LRU)
-1. [ratelimit流量控制-toEnhance](https://github.com/heteddy/algorithm/tree/master/src/ratelimit)
+1. [ratelimit流量控制](https://github.com/heteddy/algorithm/tree/master/src/ratelimit)
 1. [一致性hash算法](https://github.com/heteddy/algorithm/tree/master/src/consistentHash)
 1. [跳跃表 skiplist](https://github.com/heteddy/algorithm/tree/master/src/skiplist)
 1. [goroutine pool](https://github.com/heteddy/algorithm/tree/master/src/pool)
