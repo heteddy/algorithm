@@ -64,23 +64,23 @@ allNodes := graph.GetAllNode()
 	nodesButEndList := list.New()
 
 	for item := allNodes.Front(); item != nil; item = item.Next() {
-		if item.Value.(GraphNode) == startNode {
-			nodesButEndList.PushFront(item.Value.(GraphNode))
-		} else if item.Value.(GraphNode) == endNode {
-			nodesButStartList.PushBack(item.Value.(GraphNode))
+		if item.Val.(GraphNode) == startNode {
+			nodesButEndList.PushFront(item.Val.(GraphNode))
+		} else if item.Val.(GraphNode) == endNode {
+			nodesButStartList.PushBack(item.Val.(GraphNode))
 		} else {
-			nodesButEndList.PushBack(item.Value.(GraphNode))
-			nodesButStartList.PushFront(item.Value.(GraphNode))
+			nodesButEndList.PushBack(item.Val.(GraphNode))
+			nodesButStartList.PushFront(item.Val.(GraphNode))
 		}
 	}
 	var noStart, noEnd string
 	for item := nodesButStartList.Front(); item != nil; item = item.Next() {
-		noStart += fmt.Sprintf(" %s", item.Value.(GraphNode))
+		noStart += fmt.Sprintf(" %s", item.Val.(GraphNode))
 	}
 	log.Println(noStart+"\n", "--------------------------")
 
 	for item := nodesButEndList.Front(); item != nil; item = item.Next() {
-		noEnd += fmt.Sprintf(" %s", item.Value.(GraphNode))
+		noEnd += fmt.Sprintf(" %s", item.Val.(GraphNode))
 	}
 	log.Println(noEnd+"\n", "--------------------------")
 */

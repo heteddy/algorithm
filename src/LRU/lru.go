@@ -6,7 +6,7 @@ import (
 )
 
 /*
-使用 HashMap 存储 key，这样可以做到 save 和 get key的时间都是 O(1)，而 HashMap 的 Value 指向双向链表实现的 LRU 的 Node 节点
+使用 HashMap 存储 key，这样可以做到 save 和 get key的时间都是 O(1)，而 HashMap 的 Val 指向双向链表实现的 LRU 的 Node 节点
 */
 
 type List struct {

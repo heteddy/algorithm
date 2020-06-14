@@ -1,6 +1,9 @@
 package heap
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 type HeapSortableSlice interface {
 	Len() int
@@ -78,7 +81,7 @@ func (h *Heap) Append(v int64) {
 
 func (h *Heap) Build() {
 	// 从非叶子节点开始排序
-	for index := h.slice.Len() / 2; index >= 0; index-- {
+	for index := (h.slice.Len() - 1) / 2; index >= 0; index-- {
 		h.adjust(index, h.slice.Len())
 	}
 }
@@ -88,9 +91,13 @@ func (h *Heap) Sort() {
 	//将堆顶的元素放入最后的位置，
 	//依次创建堆并且放入指定位置
 	//s := h.slice
+
 	for j := h.slice.Len() - 1; j > 0; j-- {
+		fmt.Println("第", j, "交换前", h.slice)
 		h.slice.Swap(0, j)
+		fmt.Println("第", j, "交换后", h.slice)
 		h.adjust(0, j)
+		fmt.Println("第", j, "调整后", h.slice, "   \n  ")
 	}
 }
 
