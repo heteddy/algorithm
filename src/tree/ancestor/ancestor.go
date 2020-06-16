@@ -1,6 +1,4 @@
-
-package tree
-
+package ancestor
 
 /*
 查找两个二叉树节点的最近公共祖先
@@ -11,30 +9,35 @@ package tree
 // 如果 left is nil, right is nil;左右都找不到，那么没有
 // 如果left not nil，right is nil从右子树查找
 // 如果left is not nil, right is not nil,说明当前节点就是父节点
-func (bTree *BinaryTree) GetAncestor(node1, node2 int) *BinaryTree {
-	if bTree.value == node1 || bTree.value == node2 {
-		return bTree
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func lowestCommonAncestor(root *TreeNode, p *TreeNode, q *TreeNode) *TreeNode {
+	if root == p || root == q {
+		return root
 	}
-	var left, right *BinaryTree
-	if bTree.left != nil {
-		left = bTree.left.GetAncestor(node1, node2)
+
+	var left, right *TreeNode
+
+	if root.Left != nil {
+		left = lowestCommonAncestor(root.Left, p, q)
 	}
-	if bTree.right != nil {
-		right = bTree.right.GetAncestor(node1, node2)
+	if root.Right != nil {
+		right = lowestCommonAncestor(root.Right, p, q)
 	}
 	if left == nil && right == nil {
 		return nil
 	}
 	if left != nil && right != nil {
-		// 左子树找到一个，右子树找到一个，因此当前就是父节点
-		return bTree
+		return root
 	} else {
-		// 1. node1是node2的父节点，
-		// 2. 只找到其中一个节点比如
 		if left != nil {
 			return left
-		} else {
-			return right
 		}
+		return right
 	}
+
 }

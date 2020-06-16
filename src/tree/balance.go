@@ -1,48 +1,59 @@
-
 package tree
 
-import (
-	"math"
-)
+import "errors"
 
-func (bTree *BinaryTree) IsBalance() bool {
-	if bTree.getHeight(1) < 0 {
-		return false
-	}
-	return true
+// https://leetcode-cn.com/problems/ping-heng-er-cha-shu-lcof/submissions/
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
-/*
-判断一棵树是否为平衡二叉树
-*/
-//GetHeight 获取树的高度，返回值>0 表示高度，<0 说明已经不平衡，可以直接退出
-//
-func (bTree *BinaryTree) getHeight(level int) int {
-	if level < 0 {
-		return -1
+
+func max(a, b int) int {
+	if a > b {
+		return a
 	}
-	if bTree == nil {
-		return level
+	return b
+}
+func min(a, b int) int {
+	if a < b {
+		return a
 	}
-	var left = level
-	var right = level
-	// var err errors.new()
-	if bTree.left != nil {
-		left = bTree.left.getHeight(level + 1)
-		// 快速返回失败
-		if left < 0 {
-			return -1
-		}
+	return b
+}
+
+func checkHeight(root *TreeNode) (int, error) {
+	var err error
+	var leftHeight, rightHeight int
+	if root == nil {
+		return 0, nil
 	}
-	if bTree.right != nil {
-		right = bTree.right.getHeight(level + 1)
-		if right < 0 {
-			return -1
-		}
+	if root.Left != nil {
+		leftHeight, err = checkHeight(root.Left)
 	}
-	_delta := int(math.Abs(float64(left - right)))
-	if _delta > 1 {
-		return -1
+	if err != nil {
+		return 0, err
 	} else {
-		return int(math.Max(float64(left), float64(right)))
+		leftHeight += 1
 	}
+	if root.Right != nil {
+		rightHeight, err = checkHeight(root.Right)
+	}
+	if err != nil {
+		return 0, err
+	} else {
+		rightHeight++
+	}
+	if max(leftHeight, rightHeight)-min(leftHeight, rightHeight) <= 1 {
+		return max(leftHeight, rightHeight), nil
+	} else {
+		return 0, errors.New("not balance")
+	}
+}
+
+func isBalanced(root *TreeNode) bool {
+	if _, err := checkHeight(root); err == nil {
+		return true
+	}
+	return false
 }
