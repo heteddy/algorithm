@@ -14,7 +14,8 @@ type TreeNode struct {
 	Left  *TreeNode
 	Right *TreeNode
 }
-
+// 二叉搜索树，需要判断 祖父节点和孩子节点的大小关系，不能仅仅判断父节点和子节点的关系
+// 比如[10,5,15,null,null,6,20] 这样的一棵二叉树，因为10大于其右子树中最左端的叶子节点，因此不是二叉搜索树
 func isValidBSTWithBoundary(root *TreeNode, max, min *TreeNode) bool {
 	leftValid, rightValid := true, true
 	if root == nil {
