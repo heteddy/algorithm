@@ -1,4 +1,4 @@
-package tree
+package balance
 
 import "errors"
 
