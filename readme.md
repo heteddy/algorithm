@@ -30,7 +30,7 @@
 1. [前缀树](https://github.com/heteddy/algorithm/tree/master/src/trie)
 1. [k个有序链表的合并](https://github.com/heteddy/algorithm/tree/master/src/link-list)
 1. [接雨水](https://github.com/heteddy/algorithm/tree/master/src/rain)
-1. [股票最大收益](https://github.com/heteddy/algorithm/tree/master/src/profit)
+1. [股票最大收益](https://github.com/heteddy/algorithm/tree/master/src/stocks)
 1. [最长回文子串](https://github.com/heteddy/algorithm/tree/master/src/palindrome/palindromelist)
 1. [是否回文链表](https://github.com/heteddy/algorithm/tree/master/src/palindrome/palindromestring)
 ## 系统相关算法
