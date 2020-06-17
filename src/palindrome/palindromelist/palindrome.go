@@ -9,6 +9,7 @@
 
 package palindromelist
 
+// https://leetcode-cn.com/problems/palindrome-linked-list/
 type ListNode struct {
 	Val  int
 	Next *ListNode

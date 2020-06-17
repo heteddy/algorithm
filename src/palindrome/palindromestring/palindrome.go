@@ -9,6 +9,8 @@
 
 package palindromestring
 
+//https://leetcode-cn.com/problems/longest-palindromic-substring/
+
 func longestPalindrome(s string) string {
 	if len(s) < 2 {
 		return s
