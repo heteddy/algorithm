@@ -41,5 +41,7 @@
 1. [goroutine pool](https://github.com/heteddy/algorithm/tree/master/src/pool)
 1. [布隆过滤器](https://github.com/heteddy/algorithm/tree/master/src/bloomfilter)
 1. [基于堆的多路归并排序](https://github.com/heteddy/algorithm/tree/master/src/heap)
+1. [goroutineid](https://github.com/heteddy/algorithm/tree/master/src/spinlock)
+1. [spinlock](https://github.com/heteddy/algorithm/tree/master/src/spinlock)
 
 
