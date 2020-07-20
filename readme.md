@@ -33,6 +33,7 @@
 1. [股票最大收益](https://github.com/heteddy/algorithm/tree/master/src/stocks)
 1. [最长回文子串](https://github.com/heteddy/algorithm/tree/master/src/palindrome/palindromelist)
 1. [是否回文链表](https://github.com/heteddy/algorithm/tree/master/src/palindrome/palindromestring)
+1. [抢红包](https://github.com/heteddy/algorithm/tree/master/src/red-envelope/)
 ## 系统相关算法
 1. [LRU以及redis LRU](https://github.com/heteddy/algorithm/tree/master/src/LRU)
 1. [ratelimit流量控制](https://github.com/heteddy/algorithm/tree/master/src/ratelimit)
