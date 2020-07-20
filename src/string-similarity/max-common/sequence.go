@@ -38,7 +38,7 @@ func CommonSequence(s1, s2 string) int {
 	lenS2 := len(s2)
 	// todo 这里有问题，需要创建slice
 	var resultArray = make([][]int, 0, lenS1)
-
+	
 	for i := 0; i < lenS1; i++ {
 		tmp := make([]int, 0, lenS2)
 		for j := 0; j < lenS2; j++ {
