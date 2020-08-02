@@ -14,6 +14,8 @@ func PickMRecursively(input []int, m int) []int {
 	for i, v := range input {
 		if i < m {
 			ret[i] = v
+		} else {
+			break
 		}
 	}
 
